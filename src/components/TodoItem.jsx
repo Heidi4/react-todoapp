@@ -4,15 +4,22 @@ function TodoItem({ item, todos, setTodos }) {
   function handleDelete(item) {
     setTodos(todos.filter((todo) => todo !== item));
   }
-function handleClick() {
-  console.log("Clicked")
-}
-
+  function handleClick(name) {
+    setTodos(
+      todos.map((todo) =>
+        todo.name === name ? { ...todo, done: !todo.done } : todo
+      )
+    );
+    console.log(todos);
+  }
+  const className = item.done ? styles.completed : "";
   // jsx
   return (
     <div className={styles.item}>
       <div className={styles.itemName}>
-       <span onClick={() => handleClick(item.name)}>{item.name}</span> 
+        <span className={className} onClick={() => handleClick(item.name)}>
+          {item.name}
+        </span>
         <span>
           <button
             className={styles.deleteBtn}
@@ -22,7 +29,6 @@ function handleClick() {
           </button>
         </span>
       </div>
-
       <hr className={styles.line} />
     </div>
   );
