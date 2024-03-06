@@ -2,15 +2,17 @@ import React from "react";
 import styles from "./todoitem.module.css";
 function TodoItem({ item, todos, setTodos }) {
   function handleDelete(item) {
-    console.log("Deleted", item);
-    setTodos(todos.filter((todo) => todo !== item)
-    )
-    
+    setTodos(todos.filter((todo) => todo !== item));
   }
+function handleClick() {
+  console.log("Clicked")
+}
+
+  // jsx
   return (
     <div className={styles.item}>
       <div className={styles.itemName}>
-        {item}
+       <span onClick={() => handleClick(item.name)}>{item.name}</span> 
         <span>
           <button
             className={styles.deleteBtn}
