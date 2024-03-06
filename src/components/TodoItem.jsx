@@ -10,7 +10,6 @@ function TodoItem({ item, todos, setTodos }) {
         todo.name === name ? { ...todo, done: !todo.done } : todo
       )
     );
-    console.log(todos);
   }
   const className = item.done ? styles.completed : "";
   // jsx
